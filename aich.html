@@ -1,0 +1,109 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Website Player</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 20px;
+        }
+
+        input {
+            width: 60%;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin-left: 8px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            background: #4f46e5;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #6366f1;
+        }
+
+        .screen {
+            margin: 20px auto;
+            width: 90%;
+            height: 70vh;
+            background: black;
+            border: 3px solid #333;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🌐 Website Player</h1>
+
+    <input
+        id="url"
+        type="text"
+        placeholder="Enter website link..."
+    >
+
+    <button onclick="playWebsite()">PLAY</button>
+
+    <div class="screen">
+        <iframe id="screen"></iframe>
+    </div>
+
+    <script>
+        function playWebsite() {
+
+            let url = document.getElementById("url").value;
+
+            if (url === "") {
+                alert("Please enter a website link!");
+                return;
+            }
+
+            // Add https:// if needed
+            if (!url.startsWith("http://") &&
+                !url.startsWith("https://")) {
+
+                url = "https://" + url;
+            }
+
+            document.getElementById("screen").src = url;
+        }
+
+        // Press Enter to play
+        document.getElementById("url").addEventListener("keydown", function(event) {
+
+            if (event.key === "Enter") {
+                playWebsite();
+            }
+
+        });
+    </script>
+
+</body>
+</html>
+```
